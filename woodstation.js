@@ -11,32 +11,10 @@ display.blink(false);
 var nowString = moment().format("HHmmssDDMMYYYY");
 
 // 7 segment digit display
-var 7segmentDigits = [[true, true , true, true, true, true, false], \
-		[false, true , true, false, false, false, false], \
-		[true, true , false, true, true, false, true], \
-		[true, true , true, true, false, false, true], \
-		[false, false , true, false, false, true, true], \
-		[true, false , true, true, false, true, true], \
-		[false, false , true, true, true, true, true], \
-		[true, true , true, false, false, false, false], \
-		[true, true , true, true, true, true, true], \
-		[true, true , true, false, false, true, true]];
+var 7segmentDigits = [[true, true , true, true, true, true, false], [false, true , true, false, false, false, false], [true, true , false, true, true, false, true], [true, true , true, true, false, false, true], [false, false , true, false, false, true, true], [true, false , true, true, false, true, true], [false, false , true, true, true, true, true], [true, true , true, false, false, false, false], [true, true , true, true, true, true, true], [true, true , true, false, false, true, true]];
 
 //Time / date digits addresses on the Woodstation display (HHmmssDDMMYYYY format)
-var dateTimeDisplayAddresses = [[0,2], \
-		[14,2], \
-		[28,2], \
-		[0,3], \
-		[14,3], \
-		[28,3], \
-		[1,0], \
-		[15,0], \
-		[29,0], \
-		[1,1], \
-		[15,1], \
-		[29,1], \
-		[1,2], \
-		[15,2]];
+var dateTimeDisplayAddresses = [[0,2], [14,2], [28,2], [0,3], [14,3], [28,3], [1,0], [15,0], [29,0], [1,1], [15,1], [29,1], [1,2], [15,2]];
 
 setInterval(function(){
         var nowNewString = moment().format("HHmmssDDMMYYYY");
