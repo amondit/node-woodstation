@@ -55,4 +55,5 @@ function updateDateTimeDisplay(nowNewString, displayTimeOnly){
 			};
 		};
 	};
+	nowString = nowNewString;
 };
