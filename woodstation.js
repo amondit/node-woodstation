@@ -40,6 +40,7 @@ for (var i = 0; i < 8; i++) {
 /**
  * Temperature/humidity related initialization
 **/
+/*
 dhtSensor.initialize(22,4);
 var humidityDisplayAddresses = [[0,0],[14,0]];
 var temperatureDisplayAddresses = [[0,1], [14,1], [28,1]];
@@ -77,9 +78,9 @@ var sensorRead = setInterval(function () {
 		var digit = parseInt(temperature[0][currentDigit]);
 		write7segCharAtIndex(sevenSegmentDigits[digit], temperatureDisplayAddresses[i][0],temperatureDisplayAddresses[i][1]);
 	};
-	write7segCharAtIndex(sevenSegmentDigits[parseInt(temperature[1][0]], temperatureDisplayAddresses[2][0],temperatureDisplayAddresses[2][1]);
+	write7segCharAtIndex(sevenSegmentDigits[parseInt(temperature[1][0])], temperatureDisplayAddresses[2][0],temperatureDisplayAddresses[2][1]);
 }, 2000);
-
+*/
 
 
 var timeDisplay = setInterval(function(){
@@ -98,7 +99,7 @@ function updateDateTimeDisplay(nowNewString, displayDate){
 	//display.writeLed(15,3,true);
 	for (var i = 0; i < nowString.length; i++) {
 		if (displayDate || i < 6) {
-			if (nowNewString[i] !== nowString[i]) {
+//			if (nowNewString[i] !== nowString[i]) {
 				var digit = parseInt(nowString[i]);
 //				var writeAddress = dateTimeDisplayAddresses[i][0];
 //				var writeLed = dateTimeDisplayAddresses[i][1];
@@ -108,7 +109,7 @@ function updateDateTimeDisplay(nowNewString, displayDate){
 					writeAddress = writeAddress + 2;
 				};
 				*/
-			};
+//			};
 		};
 	};
 	nowString = nowNewString;
