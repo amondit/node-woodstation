@@ -3,7 +3,8 @@ var moment = require('moment');
 var dhtSensor = require('node-dht-sensor');
 
 
-var nowString = moment().format("HHmmssDDMMYYYY");
+var nowTimeString = moment().format("HHmmss");
+var nowDateString = moment().format("DDMMYYYY");
 
 /**
  * Display related initialization
@@ -21,7 +22,8 @@ var minusCharacter = [false, false, false, false, false, false, true];
 
 
 //Time / date digits addresses on the Woodstation display (HHmmssDDMMYYYY format)
-var dateTimeDisplayAddresses = [[0,2], [14,2], [28,2], [0,3], [14,3], [28,3], [1,0], [15,0], [29,0], [1,1], [15,1], [29,1], [1,2], [15,2]];
+var timeDisplayAddresses = [[0,2], [14,2], [28,2], [0,3], [14,3], [28,3]];
+var dateDisplayAddresses = [[1,0], [15,0], [29,0], [1,1], [15,1], [29,1], [1,2], [15,2]];
 
 /*
 //display secret message
@@ -84,35 +86,36 @@ var sensorRead = setInterval(function () {
 
 
 var timeDisplay = setInterval(function(){
-        var nowNewString = moment().format("HHmmssDDMMYYYY");
-        if (nowNewString !== nowString) {
-        	updateDateTimeDisplay(nowNewString, false);
+        var nowTimeNewString = moment().format("HHmmss");
+        
+        if (nowTimeNewString !== nowTimeString) {
+        	updateTimeDisplay(nowTimeNewString);
         };
 //      console.log(nowString);
 },100);
 
-function updateDateTimeDisplay(nowNewString, displayDate){
+function updateTimeDisplay(nowNewString){
 	//switch on display indicators (':' in time, 'D' and 'M' on date)
 	display.writeLed(41,3,true);
 	display.writeLed(1,3,true);
 	//display.writeLed(11,3,true);
 	//display.writeLed(15,3,true);
-	for (var i = 0; i < nowString.length; i++) {
-		if (displayDate || i < 6) {
+	for (var i = 0; i < nowNewString.length; i++) {
+//		if (displayDate || i < 6) {
 //			if (nowNewString[i] !== nowString[i]) {
-				var digit = parseInt(nowString[i]);
+				var digit = parseInt(nowNewString[i]);
 //				var writeAddress = dateTimeDisplayAddresses[i][0];
 //				var writeLed = dateTimeDisplayAddresses[i][1];
-				write7segCharAtIndex(sevenSegmentDigits[digit], dateTimeDisplayAddresses[i][0], dateTimeDisplayAddresses[i][1]);
+				write7segCharAtIndex(sevenSegmentDigits[digit], timeDisplayAddresses[i][0], timeDisplayAddresses[i][1]);
 				/*for (var j = 0; j < sevenSegmentDigits[digit].length; j++) {
 					display.writeLed(writeAddress, writeLed, sevenSegmentDigits[digit][j]);
 					writeAddress = writeAddress + 2;
 				};
 				*/
 //			};
-		};
+//		};
 	};
-	nowString = nowNewString;
+	nowTimeString = nowNewString;
 };
 
 function write7segCharAtIndex(charArray, baseAddr, ledIndex) {
